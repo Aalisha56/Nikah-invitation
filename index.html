@@ -68,7 +68,13 @@ body{
 
     overflow:hidden;
 
-    background:transparent;
+    background:
+        radial-gradient(
+            circle at center,
+            #fffdf9 0%,
+            #f7eee5 50%,
+            #e5d6ca 100%
+        );
 
     transition:opacity .7s ease;
 }
@@ -162,17 +168,28 @@ body{
 
 /* opening arch */
 
-.opening-arch{
+.opening-pattern{
     position:absolute;
+    inset:-50px;
 
-    width:285px;
-    height:390px;
+    opacity:.12;
 
-    border:1px solid rgba(174,139,77,.55);
+    transition:opacity .3s ease;
 
-    border-bottom:0;
+    background-image:
+        linear-gradient(30deg,
+        transparent 46%,
+        #b89559 47%,
+        transparent 48%),
 
-    border-radius:160px 160px 0 0;
+        linear-gradient(150deg,
+        transparent 46%,
+        #b89559 47%,
+        transparent 48%);
+
+    background-size:60px 60px;
+
+    transform:rotate(5deg);
 }
 
 .opening-arch::before{
@@ -204,9 +221,12 @@ body{
         transform .5s ease;
 }
 
-#opening-overlay.open .opening-content{
+#opening-overlay.open .opening-content,
+#opening-overlay.open.opening-arch,
+#opening-ovzrlay.open.monogram{
     opacity:0;
     transform:scale(.85);
+}
 }
 
 
@@ -262,6 +282,8 @@ body{
     box-shadow:
         0 0 0 7px rgba(185,147,85,.08),
         0 12px 35px rgba(88,63,49,.12);
+
+        transition: opacity .3s ease, transform .3s ease;
 }
 
 .monogram::before{
