@@ -76,9 +76,12 @@ body{
             #e5d6ca 100%
         );
 
-    transition:opacity .7s ease;
+    transition:opacity .3s ease;
 }
 
+#opening-overlay.open{
+    pointer-events:none;
+}
 
 /* subtle geometric background */
 
@@ -222,12 +225,15 @@ body{
 }
 
 #opening-overlay.open .opening-content,
-#opening-overlay.open.opening-arch,
-#opening-ovzrlay.open.monogram{
+#opening-overlay.open .opening-arch,
+#opening-overlay.open .opening-pattern,
+#opening-overlay.open .monogram{
     opacity:0;
+    visibility:hidden;
     transform:scale(.85);
+    pointer-events:none;
 }
-}
+
 
 
 .opening-label{
@@ -2149,10 +2155,15 @@ function openInvitation(){
 
 
     setTimeout(() => {
-
+        overlay.style.opacity = "0";
         overlay.style.display = "none";
 
-    }, 1500);
+        setTimeout(() => {
+            overlay.style.display = "none";
+        },300);
+
+
+    }, 1100);
 
 }
 
